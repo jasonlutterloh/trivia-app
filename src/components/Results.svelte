@@ -1,0 +1,136 @@
+<script>
+  import {
+    quiz,
+    detailedScore,
+    reset,
+    scorePercentage,
+  } from "../data/store.js";
+  import { getDisplayValue, getPercentageColor } from "./utils.js";
+  import { fly } from "svelte/transition";
+  import { onMount } from "svelte";
+
+  let percentage = 0;
+
+  onMount(async () => {
+    percentage = $scorePercentage; // To give the live update CSS effect
+  });
+</script>
+
+<style>
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 1em;
+  }
+  .final-score {
+    padding-bottom: 1em;
+    margin-bottom: 0;
+  }
+  .score-scale {
+    background: rgba(220, 220, 220, 0.6);
+    display: block;
+    margin-bottom: 90px;
+    position: relative;
+    height: 60px;
+    width: 100%;
+  }
+  .score-bar {
+    width: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 60px;
+    background: rgba(220, 220, 220);
+    transition: width 1s;
+    transition-delay: 1s;
+  }
+  .icon {
+    color: #efefef;
+    height: 2em;
+    width: 2em;
+    display: block;
+    text-align: center;
+    line-height: 2em;
+  }
+
+  .correct {
+    background: #279638;
+  }
+  .wrong {
+    background: #d11616;
+  }
+  ul {
+    padding: 0;
+  }
+  li {
+    list-style: none;
+    display: flex;
+    margin-bottom: 3em;
+  }
+  li > div:first-of-type {
+    flex: 0 0 3em;
+  }
+  li > div {
+    flex: 1 1 auto;
+  }
+  li p {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 0.8em;
+    text-align: left;
+  }
+  li p:nth-child(2) {
+    font-size: 100%;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .followup {
+    font-style: italic;
+    font-size: 0.6em;
+  }
+</style>
+
+<div
+  in:fly={{ y: 200, duration: 500, delay: 500 }}
+  out:fly={{ y: -200, duration: 500 }}>
+  <h1>Results</h1>
+
+  <div>
+    <p class="final-score">Final Score: {percentage}%</p>
+    <div class="score-scale">
+      <div
+        class="score-bar"
+        style="width:{percentage}%; background:{getPercentageColor(percentage)}" />
+    </div>
+  </div>
+
+  {#if $detailedScore != undefined && $detailedScore.length != 0}
+    <ul>
+      {#each $quiz as question, index}
+        <li>
+          <div>
+            {#if $detailedScore[index].correct}
+              <span class="icon correct">+1</span>
+            {:else}<span class="icon wrong">0</span>{/if}
+          </div>
+          <div>
+            <p>{question.question}</p>
+            <p>{getDisplayValue(question.correctAnswer)}</p>
+            {#if !$detailedScore[index].correct}
+              <p>
+                Your Answer:
+                {getDisplayValue($detailedScore[index].chosenAnswer)}
+              </p>
+            {/if}
+            {#if question.followup}
+              <p class="followup">{question.followup}</p>
+            {/if}
+          </div>
+        </li>
+      {/each}
+    </ul>
+  {/if}
+
+  <button type="button" on:click={reset}>Play Again</button>
+</div>
