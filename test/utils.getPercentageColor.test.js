@@ -12,8 +12,8 @@
 
 import { getPercentageColor } from "../src/components/utils.js";
 
-const green = "#279638";
-const blue = "#1664d1";
+const green = "#008568";
+const blue = "#0074C8";
 const orange = "#d17216";
 const red = "#d11616";
 
