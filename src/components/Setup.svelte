@@ -23,8 +23,8 @@
     input {
         background: transparent;
         border: 0;
-        border-bottom: 2px solid #222;
-        color: #222;
+        border-bottom: 2px solid #fff;
+        color: #fff;
         text-align: center;
         display: block;
         margin: 0 auto;

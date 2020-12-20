@@ -51,7 +51,7 @@
         margin-bottom: 1em;
     }
     label {
-        color: #222;
+        color: #fff;
         cursor: pointer;
         position: relative;
         font-size: 0.8em;
@@ -79,7 +79,7 @@
         left: 20px;
         height: 24px;
         width: 24px;
-        background-color: #222;
+        background-color: #fff;
         border-radius: 50%;
         transition: 0.25s all;
     }
@@ -117,7 +117,7 @@
         width: 16px;
         height: 16px;
         border-radius: 50%;
-        background: #efefef;
+        background:  rgb(39,116,174)
     }
 
     @media only screen and (max-width: 600px) {

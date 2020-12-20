@@ -37,9 +37,9 @@ export const getDisplayValue = (value) => {
 
 export const getPercentageColor = (value) => {
   if (value >= 90) {
-    return "#279638";
+    return "#008568";
   } else if (value >= 80) {
-    return "#1664d1";
+    return "#0074C8";
   } else if (value >= 70) {
     return "#d17216";
   } else {

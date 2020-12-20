@@ -27,6 +27,7 @@
   }
   .score-scale {
     background: rgba(220, 220, 220, 0.6);
+    border: 3px solid #fff;
     display: block;
     margin-bottom: 90px;
     position: relative;
@@ -45,6 +46,7 @@
     transition-delay: 1s;
   }
   .icon {
+    border: 3px solid #fff;
     color: #efefef;
     height: 2em;
     width: 2em;
@@ -54,10 +56,10 @@
   }
 
   .correct {
-    background: #279638;
+    background: #008568;
   }
   .wrong {
-    background: #d11616;
+    background: #6E7783;
   }
   ul {
     padding: 0;
