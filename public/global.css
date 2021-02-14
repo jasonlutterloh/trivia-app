@@ -43,3 +43,11 @@ input, button, select, textarea {
 input:disabled {
 	color: #ccc;
 }
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('/fonts/poppins-regular-webfont.woff2') format('woff2'),
+			 url('/fonts/poppins-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
