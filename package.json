@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .js,.svelte --fix"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.22.7",
+    "@babel/preset-env": "^7.23.8",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "babel-jest": "^29.7.0",
